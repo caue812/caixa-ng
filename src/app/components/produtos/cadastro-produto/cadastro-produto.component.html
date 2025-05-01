@@ -1,1 +1,39 @@
-<p>cadastro-produto works!</p>
+<div class="container">
+    <h1>Cadastro de Produtos</h1>
+  
+    <div class="formulario-tabela">
+      <div class="formulario">
+        <div>
+          <label for="campo-nome">Nome</label>
+          <input type="text" id="campo-nome" placeholder="Digite um texto" [(ngModel)]="nome">
+        </div>
+  
+        <button (click)="salvarProduto()">Salvar</button>
+      </div>
+  
+      <div class="tabela">
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produto of produtos; trackBy: trackProduto">
+              <td>{{ produto.id }}</td>
+              <td>{{ produto.nome }}</td>
+              <td>{{ produto.valor }}</td>  <!-- Exibe o valor do produto -->
+              <td>
+                <button (click)="iniciarEdicao(produto)">Editar</button>
+                <button (click)="apagarProduto(produto)">Apagar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
