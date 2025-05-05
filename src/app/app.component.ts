@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CadastroReceitaComponent } from './components/receitas/cadastro-receita/cadastro-receita.component';
+import { RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'aplicacao-root',
-  imports: [RouterOutlet, CadastroReceitaComponent],
+  imports: [RouterOutlet, RouterOutlet, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
