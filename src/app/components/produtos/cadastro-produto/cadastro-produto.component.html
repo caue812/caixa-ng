@@ -1,39 +1,79 @@
 <div class="container">
-    <h1>Cadastro de Produtos</h1>
-  
-    <div class="formulario-tabela">
-      <div class="formulario">
-        <div>
-          <label for="campo-nome">Nome</label>
-          <input type="text" id="campo-nome" placeholder="Digite um texto" [(ngModel)]="nome">
-        </div>
-  
-        <button (click)="salvarProduto()">Salvar</button>
+  <h1>Cadastro de Produtos</h1>
+
+  <div class="formulario-tabela">
+    <div class="formulario">
+      <div>
+        <label for="campo-nome">Nome</label>
+        <input type="text" id="campo-nome" placeholder="Digite um nome" [(ngModel)]="nome" name="nome">
       </div>
-  
-      <div class="tabela">
-        <table border="1">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Nome</th>
-              <th>Valor</th>
-              <th>Ação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let produto of produtos; trackBy: trackProduto">
-              <td>{{ produto.id }}</td>
-              <td>{{ produto.nome }}</td>
-              <td>{{ produto.valor }}</td>  <!-- Exibe o valor do produto -->
-              <td>
-                <button (click)="iniciarEdicao(produto)">Editar</button>
-                <button (click)="apagarProduto(produto)">Apagar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+      <div>
+        <label>Categoria</label>
+        <select [(ngModel)]="categoria" name="categoria">
+          <option value="">Selecione</option>
+          <option *ngFor="let cat of categoriasDisponiveis" [value]="cat">{{ cat }}</option>
+        </select>
       </div>
+
+      <div>
+        <label>Quantidade</label>
+        <input type="number" [(ngModel)]="quantidade" name="quantidade">
+      </div>
+
+      <div>
+        <label>Preço Unitário</label>
+        <input type="number" [(ngModel)]="precoUnitario" name="precoUnitario">
+      </div>
+
+      <div>
+        <label>Vencido?</label>
+        <label><input type="radio" [(ngModel)]="vencido" [value]="true" name="vencido"> Sim</label>
+        <label><input type="radio" [(ngModel)]="vencido" [value]="false" name="vencido"> Não</label>
+      </div>
+
+      <div>
+        <label><input type="checkbox" [(ngModel)]="estoque" name="estoque"> Em estoque</label>
+      </div>
+
+      <div>
+        <label>Descrição</label>
+        <textarea [(ngModel)]="descricao" name="descricao"></textarea>
+      </div>
+
+      <button (click)="salvarProduto()">Salvar</button>
+    </div>
+
+    <div class="tabela">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Valor</th>
+            <th>Quantidade</th>
+            <th>Vencido</th>
+            <th>Estoque</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos; trackBy: trackProduto">
+            <td>{{ produto.id }}</td>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.categoria }}</td>
+            <td>{{ produto.valor }}</td>
+            <td>{{ produto.quantidade }}</td>
+            <td>{{ produto.vencido ? 'Sim' : 'Não' }}</td>
+            <td>{{ produto.estoque ? 'Sim' : 'Não' }}</td>
+            <td>
+              <button (click)="iniciarEdicao(produto)">Editar</button>
+              <button (click)="apagarProduto(produto)">Apagar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
+</div>
