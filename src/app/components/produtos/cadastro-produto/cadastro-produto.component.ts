@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { Produto } from 'src/app/models/produto';
+import { Produto } from '../../../models/produto';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
+  imports: [FormsModule],
   selector: 'app-cadastro-produto',
   templateUrl: './cadastro-produto.component.html',
   styleUrls: ['./cadastro-produto.component.css']

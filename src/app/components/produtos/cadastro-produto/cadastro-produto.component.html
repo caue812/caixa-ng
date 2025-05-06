@@ -59,7 +59,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let produto of produtos; trackBy: trackProduto">
+          @for(produto of produtos; track produto){
+
+          <tr>
             <td>{{ produto.id }}</td>
             <td>{{ produto.nome }}</td>
             <td>{{ produto.categoria }}</td>
@@ -72,6 +74,7 @@
               <button (click)="apagarProduto(produto)">Apagar</button>
             </td>
           </tr>
+          }
         </tbody>
       </table>
     </div>
