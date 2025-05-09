@@ -1,1 +1,34 @@
-<p>estoque works!</p>
+<h1>Lista de Estoque</h1>
+
+
+<app-cadastro-produto
+  [estoque]="estoqueParaEditar"
+  (salvarEvento)="adicionarOuEditarEstoque($event)">
+</app-cadastro-produto>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Categoria</th>
+      <th>Quantidade</th>
+      <th>Data de Entrada</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let estoque of estoques">
+      <td>{{ estoque.id }}</td>
+      <td>{{ estoque.nome }}</td>
+      <td>{{ estoque.categoria }}</td>
+      <td>{{ estoque.quantidade }}</td>
+      <td>{{ estoque.dataEntrada | date }}</td>
+      <td>
+        <button (click)="editar(estoque)">Editar</button>
+        <button (click)="apagar(estoque)">Apagar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
